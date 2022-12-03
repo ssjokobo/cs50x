@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            function check_1() {
+                let buttons = document.querySelectorAll('button');
+                for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function() {
+                    if (buttons[i].innerHTML === 'Miles Davis') {
+                        buttons[i].style.backgroundColor = 'green';
+                        document.querySelector('#feed1').innerHTML = 'Correct!';
+                    } else {
+                        buttons[i].style.backgroundColor = 'red';
+                        document.querySelector('#feed1').innerHTML = 'Incorrect';
+                    }
+                    });
+                }
+            }
+
+            function check_2() {
+                let answer = document.querySelector('#answer');
+                if (answer.value.toLowerCase() === 'miles davis') {
+                    answer.style.backgroundColor = 'green';
+                    document.querySelector('#feed2').innerHTML = 'Correct!';
+                } else {
+                    answer.style.backgroundColor = 'red';
+                    document.querySelector('#feed2').innerHTML = 'Incorrect';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Who plays trumpet?</h3>
+                    <button onclick="check_1(); return false;">John Coltrane</button>
+                    <button onclick="check_1(); return false;">Miles Davis</button>
+                    <button onclick="check_1(); return false;">Red Garland</button>
+                    <button onclick="check_1(); return false;">Paul Chambers</button>
+                    <button onclick="check_1(); return false;">Philly Joe Jones</button>
+                <p id="feed1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Who is the leader of the album <i>Kind Of Blue</i> (1959)?<h3>
+                    <form onsubmit="check_2(); return false;">
+                        <input id="answer" type="text">
+                        <input type="submit">
+                    </form>
+                <p id="feed2"></p>
+            </div>
+        </div>
+    </body>
+</html>
