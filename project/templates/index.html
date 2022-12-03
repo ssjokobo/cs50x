@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<form action="/roman" method="get">
+    <h2>What key is it?<h2>
+    <select name="key" id="key" required>
+        <option value="" selected disabled hidden>Key Selection</option>
+    {% for key in keys %}
+        <option value="{{ key }}">{{ key }}</option>
+    {% endfor %}
+    </select>
+    <h2>How many chords are there?<h2>
+    <h5>(Maximum is 12 chords)</h5>
+    <select name="amount" id="amount" ç>
+        <option value="" selected disabled hidden>Amount</option>
+        {% for i in range(12) %}
+        <option value="{{ i + 1 }}">{{ i + 1 }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Next</button>
+</form>
+<br>
+<h4>Harmony supported in this version:</h4>
+<ul>
+    <li>Chords: I, ii, iii, IV, V, vi, viio</li>
+    <li>Inversions: root position, 1st inversion, 2nd inversion</li>
+</ul>
+
+<h4>Error Detecting Features supported in this version:</h4>
+<ul id="feature">
+    <li>Retrogression</li>
+    <li>Spelling</li>
+    <li>Spacing</li>
+    <li>Overlapping</li>
+    <li>Range</li>
+    <li>Bass & Figured Bass Agreement</li>
+    <li>Doubling</li>
+    <li>Parallel 5th & 8th</li>
+    <li>Hidden 5th & 8th</li>
+    <li>Leading Tone Motion on Dominant</li>
+    <li>b5 Motion on Diminished</li>
+    <li>Big Leap</li>
+    <li>Inner Voice Tritone Leap</li>
+    <li>Bass 7th Leap</li>
+</ul>
+
+
+{% endblock %}

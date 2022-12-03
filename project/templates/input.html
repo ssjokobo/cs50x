@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<form action="/check" method="get">
+    <h2>Key: {{ key }} Major</h2>
+    <p class="error">Only input pitches from {{ key }} major scale</p>
+    <p>Formatting: pitch followed by octave</p>
+    <p>For example: Bb5, C4, D#3</p>
+    <p>Maximum range: A1-C8 (88 piano pitches)</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+            {% for i in range(amount) %}
+                <th scope="col">Chord #{{ i + 1 }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Soprano</th>
+            {% for i in range(amount) %}
+                <div class="form-group w-25">
+                <td><input autocomplete="off" class="form-control input-sm" id="inputsm" name="s{{ i }}" placeholder="C4-G5" type="text" required></td>
+                </div>
+            {% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">Alto</th>
+
+            {% for i in range(amount) %}
+                <div class="form-group w-25">
+                <td><input autocomplete="off" class="form-control input-sm" id="inputsm" name="a{{ i }}" placeholder="G3-D5" type="text" required></td>
+                </div>
+            {% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">Tenor</th>
+            {% for i in range(amount) %}
+                <div class="form-group w-25">
+                <td><input autocomplete="off" class="form-control input-sm" id="inputsm" name="t{{ i }}" placeholder="C3-F4" type="text" required></td>
+                </div>
+            {% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">Bass</th>
+            {% for i in range(amount) %}
+                <div class="form-group w-25">
+                <td><input autocomplete="off" class="form-control input-sm" id="inputsm" name="b{{ i }}" placeholder="E2-C4" type="text" required></td>
+                </div>
+            {% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">{{ key }}:</th>
+            {% for i in fb %}
+                <td>{{ i["num"] }}{{ i["inv"] }}</td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    {% for i in retrogression %}
+        <h2 class="error">{{ i }}</h2>
+    {% endfor %}
+    <button type="submit">Check</button>
+</form>
+
+{% endblock%}

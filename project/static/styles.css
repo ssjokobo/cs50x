@@ -1,0 +1,36 @@
+a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+header, footer {
+    background-color: #00d1b2;
+    padding: 10px;
+}
+
+main {
+    padding-left: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 3%;
+}
+
+html {
+    font-family: Helvetica;
+}
+
+#feature {
+    column-count: 2;
+}
+
+.error {
+    color: red;
+}
+
+.features {
+    padding: 100px;
+}
+
+.good {
+    color: green;
+}

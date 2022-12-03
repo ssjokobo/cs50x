@@ -1,0 +1,194 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<h2>Key: {{ key }} Major</h2>
+
+{% if invalid %}
+<h1 class="error">INVALID INPUT!!!</h1>
+{% endif %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+        {% for i in range(amount) %}
+            <th scope="col">Chord #{{ i + 1 }}</th>
+        {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Soprano</th>
+        {% for i in range(amount) %}
+            <td>{{ chords[i][0] }}</td>
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Alto</th>
+        {% for i in range(amount) %}
+            <td>{{ chords[i][1] }}</td>
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Tenor</th>
+        {% for i in range(amount) %}
+            <td>{{ chords[i][2] }}</td>
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Bass</th>
+        {% for i in range(amount) %}
+            <td>{{ chords[i][3] }}</td>
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">{{ key }}:</th>
+        {% for i in fb %}
+            <td>{{ i["num"] }}{{ i["inv"] }}</td>
+        {% endfor %}
+        </tr>
+    {% if not invalid %}
+        <tr>
+            <th scope="row">Wrong Spelling</th>
+        {% for i in range(amount) %}
+            {% if i in errors["spell"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Over Spacing</th>
+        {% for i in range(amount) %}
+            {% if i in errors["space"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Overlaping</th>
+        {% for i in range(amount) %}
+            {% if i in errors["overlap"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Over Range</th>
+        {% for i in range(amount) %}
+            {% if i in errors["range"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Wrong Bass</th>
+        {% for i in range(amount) %}
+            {% if i in errors["bass"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Wrong Doubling</th>
+        {% for i in range(amount) %}
+            {% if i in errors["doub"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        {% if amount > 1 %}
+        <tr>
+            <th scope="row">Parallel 5 & 8 from previous chord</th>
+            <td></td>
+        {% for i in range(amount - 1) %}
+            {% if i in errors["parallel"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Hidden 5 & 8 from previous chord</th>
+            <td></td>
+        {% for i in range(amount - 1) %}
+            {% if i in errors["hidden"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Leading Tone Misguided</th>
+            <td></td>
+        {% for i in range(amount - 1) %}
+            {% if i in errors["leadt"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">b5 Dissonance Misguided</th>
+            <td></td>
+        {% for i in range(amount - 1) %}
+            {% if i in errors["dissb5"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Big Leap</th>
+            <td></td>
+        {% for i in range(amount - 1) %}
+            {% if i in errors["leap"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Inner Voice Tritone Leap</th>
+            <td></td>
+        {% for i in range(amount - 1) %}
+            {% if i in errors["ttleap"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr>
+            <th scope="row">Bass 7th Inverval Leap</th>
+            <td></td>
+        {% for i in range(amount - 1) %}
+            {% if i in errors["b7leap"] %}
+                <td class="error">:( Found</td>
+            {% else %}
+                <td class="good">:) None</td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        {% endif %}
+    {% endif %}
+    </tbody>
+</table>
+{% endblock %}

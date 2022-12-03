@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<h2>Enter The Figured Bass</h2>
+<h4>Harmony supported in this version:</h4>
+<ul>
+    <li>Chords: I, ii, iii, IV, V, vi, viio</li>
+    <li>Inversions: root position, 1st inversion, 2nd inversion</li>
+</ul>
+<form action="/input" method="get">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+            {% for i in range(amount) %}
+                <th scope="col">Chord #{{ i + 1 }}</td>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{ key }}:</th>
+                {% for i in range(amount) %}
+                <td>
+                    <select name="fb{{ i }}" id="fb" required>
+                    {% for j in avail_fb %}
+                        <option value="{{ j }}">{{ j }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">Inversion Type</th>
+                {% for i in range(amount) %}
+                <td>
+                    <select name="inv{{ i }}" id="inv">
+                    {% for j in inversions %}
+                        <option value="{{ j }}">{{ j }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit">Next</button>
+</form>
+
+{% endblock%}
