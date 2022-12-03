@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<h1>Stocks Portfolio Info</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Symbol</td>
+            <td>Name</td>
+            <td>Shares</td>
+            <td>Price</td>
+            <td>Value</td>
+        </tr>
+    <!-- symbol - stock name, shares own, current price, value own, cash balance, total balance -->
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+            <tr>
+                <td>{{ stock["symbol"] }}</td>
+                <td>{{ stock["name"] }}</td>
+                <td>{{ stock["shares"] }}</td>
+                <td>{{ stock["price"] }}</td>
+                <td>{{ stock["value"] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h1>Balance</h1>
+<h2>Cash Balance = {{ balance }}</h2>
+<h2>Total Balance = {{ total }}</h2>
+{% endblock %}

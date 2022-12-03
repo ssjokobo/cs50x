@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<h1>Transaction History</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Type</td>
+            <td>Symbol</td>
+            <td>Price</td>
+            <td>Shares</td>
+            <td>Time</td>
+        </tr>
+    <!-- symbol - stock name, shares own, current price, value own, cash balance, total balance -->
+    </thead>
+    <tbody>
+        {% for tran in trans %}
+            <tr>
+                <td>{{ tran["type"] }}</td>
+                <td>{{ tran["symbol"] }}</td>
+                <td>{{ tran["price"] }}</td>
+                <td>{{ tran["shares"] }}</td>
+                <td>{{ tran["time"] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
