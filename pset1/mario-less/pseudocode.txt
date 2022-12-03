@@ -1,0 +1,4 @@
+getting input and check
+    do-while
+left-aligning then add dots to right-align
+    for
