@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: The time taken on reversed 50000 was 6 seconds and on sorted 50000 was 0.7 second. That is pretty close to O(N^2) and Omega(N) which are bubble sort.
+
+sort2 uses: Merge Sort
+
+How do you know?: Comparing sort2 and sort3 time. Sort2 in general is faster.
+
+sort3 uses: Selection Sort
+
+How do you know?: Comparing sort2 and sort3 time. Sort3 in general is slower.
