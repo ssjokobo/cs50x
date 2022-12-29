@@ -33,7 +33,7 @@ Users will need a web browser to open the web app and will follow instructions o
 
 1. Input the key and amount of chords. Only possible keys are from 7-flat to 7-sharp keys: "B#", "E#", "A#", "D#", "G#", "C#", "F#", "B", "E", "A", "D", "G", "C", "F", "Bb", "Eb", "Ab", "Db", "Gb", "Cb", and "Fb". Amount of chords are 1-12 chords.
 2. Input the figured bass via Roman numeral and inversion number. Possible roman numerals are I, ii, iii, IV, V, vi, viio. And possible inversions are root position, 1st inversion, and 2nd inversion.
-3. At this point, if there is any retrogression error from the figured bass, the web app will show them all now. The next step is to input the 4-part harmony following the indicated format: PitchOctave (Eb5, C4, D#3, G5). Check4Part will reject any wrong formatting input and any pitch outside of the major scale from the selected key. The possible range is according to 88 piano keys from A1 to C8. Any input beyond this list will be rejected.
+3. At this point, if there is any retrogression error from the figured bass, the web app will show them all now. The next step is to input the 4-part harmony following the indicated format: PitchOctave (Eb5, C4, D#3, G5). Check4Part will reject any wrong formatting input and any pitch outside of the major scale from the selected key. The possible range is according to 88 piano keys from A0 to C8. Any input beyond this list will be rejected.
 4. See the result. If the web app found any specific types of errors, they will be shown wil ":( Found". If any specific types of errors are not found, the web app will show ":) None".
 
 ##### Technologies:
